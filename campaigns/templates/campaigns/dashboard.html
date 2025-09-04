@@ -1,0 +1,32 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'campaigns/css/dashboard.css' %}?v=1.0.1">
+
+{% block content %}
+
+<!-- User Profile Section -->
+<div class="user-profile">
+    <h1>WELCOME, {{ request.user.username|upper }}</h1>
+    <a href="{% url 'logout' %}" class="btn btn-danger logout-btn">Logout</a>
+</div>
+
+<!-- Start New Campaign Button -->
+<a href="{% url 'create_campaign' %}" class="btn btn-primary">Start New Campaign</a>
+
+<!-- User Campaigns Section -->
+<h3>Your Campaigns</h3>
+{% for campaign in campaigns %}
+<div class="campaign-card">
+    <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}" class="campaign-image">
+    <h4>{{ campaign.title }}</h4>
+    <p>Status: {{ campaign.get_status_display }}</p>
+    <p>Raised: ₹{{ campaign.current_amount }} of ₹{{ campaign.target_amount }}</p>
+</div>
+{% empty %}
+<p>No campaigns yet. Start your first campaign!</p>
+{% endfor %}
+
+{% endblock %}

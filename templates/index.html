@@ -1,0 +1,137 @@
+{% load static %} {% include "includes/header.html"%} {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/index.css' %} ?v=1.0.2" />
+<script src="{% static 'js/index.js' %} ?v=1.0.2" defer></script>
+
+<div class="landing-page">
+  <div class="branding-stripe">
+    <span class="branding-icon">📢</span>
+    <span class="branding-text">Zero Fees, Maximum Impact – Because Every Penny Matters!</span>
+    <span class="branding-percentage">0%</span>
+    <span class="branding-background-icon">🔷</span>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="header-logo animated"><span>P</span>RAYASH</h1>
+    <h2 class="main-heading animated">Giving Made Simple, Impact Made Real</h2>
+    <!-- <p class="subheading animated">Join thousands of supporters in funding Medical, Animal, Natural Calamities,
+                Rite of Passage around the worldwide.</p> -->
+
+    <div class="cta-container">
+      <button class="cta-btn animated">Start a Campaign</button>
+      <button class="cta-btn secondary-cta animated">Donate Now</button>
+    </div>
+    <div class="message"></div>
+
+    <div class="stats-container animated">
+      <div class="stat-item">
+        <div class="stat-number" data-count="127">0</div>
+        <div>Active Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="2.1">0</div>
+        <div>Million Raised</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="100">0</div>
+        <div>Communities Helped</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="campaigns-section">
+  <h2>Featured Campaigns</h2>
+  <div class="campaigns-grid">
+    {% for campaign in campaigns %}
+    <div class="campaign-card">
+      <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}" class="campaign-image">
+      <h3 class="campaign-title">{{ campaign.title }}</h3>
+      <p class="campaign-description">{{ campaign.description|truncatewords:20 }}</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ campaign.current_amount|floatformat:0 }}%"></div>
+      </div>
+
+      <p class="amount-raised">Raised: NPR {{ campaign.current_amount }} of NPR {{ campaign.target_amount }}</p>
+      <a href="{% url 'campaign_detail' campaign.id %}" class="view-details-btn">View Details</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="wave-container">
+  <div class="header">Fundraising Categories</div>
+  <p>Choose from our diverse range of causes and make a meaningful impact in areas that matter most to you.</p>
+  <div class="icons-container">
+    <div class="icon-box">
+      <div class="icon"><img src="{% static 'images/categories/nature_calamities.png' %}" alt="Natural Calamities">
+      </div>
+      <div class="text">NATURAL CALAMITIES</div>
+    </div>
+    <div class="icon-box">
+      <div class="icon"><img src="{% static 'images/categories/animal.png' %}" alt="Animal Care"></div>
+      <div class="text">ANIMAL CARE</div>
+    </div>
+    <div class="icon-box">
+      <div class="icon"><img src="{% static 'images/categories/medical.png' %}" alt="Medical Urgency"></div>
+      <div class="text">MEDICAL URGENCY</div>
+    </div>
+    <div class="icon-box">
+      <div class="icon"><img src="{% static 'images/categories/rop.png' %}" alt="Rite of Passage"></div>
+      <div class="text">RITE OF PASSAGE (SAMSKARA)</div>
+    </div>
+  </div>
+  <div class="wave">
+    <!-- Insert a wave image or animation here if you'd like -->
+  </div>
+</div>
+
+<section class="about-section">
+  <div class="about-heading">
+    <h2>
+      Prayash believes that every small effort can create a big change.
+      Together, we turn generosity into impact, hope into reality, and dreams into action.
+    </h2>
+  </div>
+
+  <div class="about-descs">
+    <p>We believe in making a difference in the lives of those in need. Our mission is to provide education,
+      healthcare, and support to underprivileged communities. Every donation helps change a life.</p>
+    <button class="cta-button">LEARN MORE ABOUT PRAYASH</button>
+  </div>
+</section>
+
+<section class="impact-stories">
+  <div class="section-heading">
+    <h2>Stories of Change</h2>
+    <p>See how your contributions make a difference</p>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel-slide active">
+      <div class="story-content">
+        <img src="https://picsum.photos/150/150?2" alt="Beneficiary" class="story-image">
+        <blockquote>
+          "Thanks to the community's support, we now have clean drinking water"
+          <cite>- Sarah, Village Leader</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="carousel-slide">
+      <div class="story-content">
+        <img src="https://picsum.photos/150/150?3" alt="Beneficiary" class="story-image">
+        <blockquote>
+          "The fundraiser helped me get the treatment I needed"
+          <cite>- John, Medical Survivor</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-dots"></div>
+</section>
+
+{% endblock %}
+
+{% include "includes/footer.html"%}

@@ -1,0 +1,29 @@
+<!-- campaigns/detail.html -->
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'donations/css/detail.css' %}">
+
+{% include "includes/header.html" %}
+
+{% block content %}
+<div class="campaign-detail">
+    <h1>{{ campaign.title }}</h1>
+    <img src="{{ campaign.image.url }}" alt="{{ campaign.title }}">
+    <p>{{ campaign.description }}</p>
+    
+    <div class="progress">
+        <div class="progress-bar" style="width: {{ campaign.progress_percentage }}%;">
+            {{ campaign.progress_percentage }}%
+        </div>
+    </div>
+    
+    <p>Raised: ₹{{ campaign.current_amount }} of ₹{{ campaign.target_amount }}</p>
+    
+    <a href="{% url 'donate' campaign.id %}" class="btn btn-donate">
+        Donate Now
+    </a>
+</div>
+{% endblock %}
+
+{% include "includes/footer.html" %}

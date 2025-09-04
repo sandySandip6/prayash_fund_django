@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-inner">
+        <div class="branding">
+            <!-- Optional Logo -->
+            <img src="{% static 'users/img/logo.png' %}" alt="Logo">
+        </div>
+
+        <h2>Login</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-control">
+                <i class="fas fa-user"></i>
+                {{ form.username }}
+            </div>
+
+            <div class="form-control">
+                <i class="fas fa-lock"></i>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="btn-primary">Log in</button>
+        </form>
+
+        <div class="additional-links">
+            <p>New user? <a href="{% url 'register' %}">Register here</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

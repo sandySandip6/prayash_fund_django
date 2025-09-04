@@ -1,0 +1,40 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% block content %}
+<div class="donation-form">
+    <h2>Donate to {{ campaign.title }}</h2>
+    
+    <div class="qr-codes">
+        <div class="qr-item">
+            {% comment %} <img src="{% static 'donations/img/esewa_qr.png' %}" alt="Esewa QR"> {% endcomment %}
+            <p>Esewa</p>
+        </div>
+        <div class="qr-item">
+            {% comment %} <img src="{% static 'donations/img/khalti_qr.png' %}" alt="Khalti QR"> {% endcomment %}
+            <p>Khalti</p>
+        </div>
+        <!-- Add other payment QR codes -->
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label>Payment Method:</label>
+            {{ form.payment_method }}
+        </div>
+        
+        <div class="form-group">
+            <label>Amount:</label>
+            {{ form.amount }}
+        </div>
+        
+        <div class="form-group">
+            <label>Message (optional):</label>
+            {{ form.message }}
+        </div>
+
+        <button type="submit" class="btn btn-submit">Send Donation</button>
+    </form>
+</div>
+{% endblock %}
