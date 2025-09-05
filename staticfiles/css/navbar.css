@@ -1,0 +1,144 @@
+/* Updated Color Variables */
+:root {
+    --primary-accent: #2A9D8F;
+    --secondary-accent: #264653;
+    --soft-yellow: #E9C46A;
+    --warm-white: #FDFCDC;
+    --cream: #F4F1DE;
+    --text-dark: #000000;
+    --button-hover: #F4A261;
+    --stats-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--warm-white);
+    /* color: var(--text-dark); */
+    line-height: 1.6;
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 3%;
+    background: rgb(248 255 219);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: relative;
+    top: 0;
+    z-index: 100;
+}
+
+/* Logo */
+.nav-logo img {
+    height: 67px;
+    width: auto;
+    background-color: #15173a;
+}
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-accent);
+}
+
+/* Navbar Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-buttons a {
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.donate-btn {
+    background: var(--primary-accent);
+    color: white;
+}
+
+.appeal-btn {
+    background: var(--secondary-accent);
+    color: white;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background: var(--warm-white);
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease-in-out;
+}
+
+.sidebar a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.sidebar a:hover {
+    background: var(--soft-yellow);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links, .nav-buttons {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: block;
+    }
+}

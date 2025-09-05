@@ -317,7 +317,7 @@ body {
 
 /* Campaigns Section Styling */
 .campaigns-section {
-    padding: 2rem 2rem;
+    padding: 3rem 2rem;
     background: linear-gradient(135deg, #f8fffe 0%, #f0f9f8 100%);
     text-align: center;
     position: relative;
@@ -347,12 +347,11 @@ body {
 .campaigns-section h2::after {
     content: '';
     position: absolute;
-    /* margin: 10px; */
-    bottom: -5px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 470px;
-    height: 7px;
+    width: 100px;
+    height: 4px;
     background: linear-gradient(to right, #2A9D8F, #E9C46A);
     border-radius: 2px;
 }
@@ -371,7 +370,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     max-width: 1400px;
-    margin: 15px auto;
+    margin: 0 auto;
 }
 
 .campaign-card {
